@@ -24,3 +24,31 @@ const movieDB = {
     ]
 };
 
+let adv = document.querySelectorAll(".promo__adv"),
+    bg = document.querySelector('.promo__bg'),
+    genre = bg.querySelector('.promo__genre'),
+    movieList = document.querySelector('.promo__interactive-list');
+
+adv.forEach(item => { //removing adv
+    item.remove();
+});
+
+genre.textContent = 'драма'; //pushing instead of comedy
+
+bg.style.backgroundImage = 'url("img/bg.jpg")'; // changing background
+
+ 
+movieList.textContent = ''; // clearing unsorted films on page
+
+movieDB.movies.sort(); // sorting db
+
+movieDB.movies.forEach((film, i) => { //adding sorted movie list
+    movieList.innerHTML += `
+        <li class="promo__interactive-item">${i + 1} ${film}
+            <div class="delete"></div>
+        </li>
+    `;
+});
+
+
+
